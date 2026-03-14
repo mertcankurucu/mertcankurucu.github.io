@@ -2,21 +2,22 @@
 layout: about
 title: about
 permalink: /
-subtitle: <a href='https://www.itu.edu.tr/en'>Istanbul Technical University</a>. Control and Automation Engineering. Recent Ph.D. Graduate.
+subtitle: Visiting Postdoctoral Researcher at <a href='https://www.kth.se/is/rpl'>KTH Royal Institute of Technology, RPL Division</a>
 
 profile:
   align: right
   image: prof_pic.jpg
-  image_circular: false # crops the image to make it circular
+  image_circular: false
   more_info: >
-    <p>Faculty of Electrical and Electronics Engineering</p>
-    <p>Istanbul Technical University</p>
-    <p>Istanbul, Turkey</p>
+    <p>Robotics, Perception and Learning (RPL)</p>
+    <p>KTH Royal Institute of Technology</p>
+    <p>Stockholm, Sweden</p>
 
-news: true # includes a list of news from _news
-selected_papers: true # includes a list of papers marked as "selected={true}"
-social: true # includes social icons at the bottom of the page
+news: true
+selected_papers: true
+social: true
 ---
 
-I am a Research Assistant at Istanbul Technical University in the Department of Control and Automation Engineering. I recently graduated from PhD. 
----
+I am a Visiting Postdoctoral Researcher at the [Robotics, Perception and Learning (RPL)](https://www.kth.se/is/rpl) division of KTH Royal Institute of Technology, working with [Dr. Hossein Azizpour](https://scholar.google.com/citations?user=mBPdMqgAAAAJ). I received my Ph.D. in Control and Automation Engineering from [Istanbul Technical University](https://www.itu.edu.tr/en) in 2025.
+
+My research lies at the intersection of robust deep learning, reinforcement learning, and control. I develop learning methods designed to remain reliable under noise, outliers, misspecification, and uncertainty, while also studying control-oriented and mathematically grounded approaches based on optimization and fractional calculus. These directions are motivated by real-world applications in structural and seismic control, robotics, and intelligent dynamical systems.

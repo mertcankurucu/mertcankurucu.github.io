@@ -3,7 +3,7 @@ layout: page
 permalink: /teaching/
 title: teaching
 description: Courses I've taught and supervised at Istanbul Technical University
-nav: true
+nav: false
 nav_order: 5
 ---
 

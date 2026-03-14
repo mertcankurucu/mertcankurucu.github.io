@@ -9,11 +9,12 @@ last_name: Kurucu
 contact_note: >
   
 description: > # the ">" symbol means to ignore newlines until "footer_text:"
-
+  Visiting Postdoctoral Researcher at KTH Royal Institute of Technology.
+  Research in robust deep learning, reinforcement learning, and control.
 footer_text: >
   Powered by <a href="https://jekyllrb.com/" target="_blank">Jekyll</a> with <a href="https://github.com/alshedivat/al-folio">al-folio</a> theme.
   
-keywords: fractional-calculus, robust-learning, control-systems, deep-learning, adaptive-control, machine-learning, optimization # add your own keywords or leave empty
+keywords: robust-learning, reinforcement-learning, control, deep-learning, fractional-calculus, optimization # add your own keywords or leave empty
 lang: en # the language of your site (for example: en, fr, cn, ru, etc.)
 icon: 🎓 # the emoji used as the favicon (alternatively, provide image name in /assets/img/)
 
@@ -82,7 +83,7 @@ bing_site_verification: # out your bing-site-verification ID (Bing Webmaster)
 # -----------------------------------------------------------------------------
 
 blog_name: Research Notes # blog_name will be displayed in your blog page
-blog_description: Thoughts on fractional calculus, robust learning, and control systems
+blog_description: Research notes
 permalink: /blog/:year/:title/
 lsi: false # produce an index for related posts
 
@@ -237,8 +238,8 @@ jekyll-archives:
       tags: "/blog/:type/:name/"
       categories: "/blog/:type/:name/"
 
-display_tags: ["fractional-calculus", "robust-learning", "control-systems", "deep-learning", "optimization"]
-display_categories: ["research", "publications"]
+display_tags: ["robust-learning", "reinforcement-learning", "control", "deep-learning", "fractional-calculus"]
+display_categories: ["research"]
 
 # -----------------------------------------------------------------------------
 # Jekyll Scholar
