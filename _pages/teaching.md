@@ -7,4 +7,4 @@ nav: true
 nav_order: 3
 ---
 
-I have contributed to undergraduate and graduate teaching in machine learning, optimization, and control systems at Istanbul Technical University. Detailed teaching information will be added soon.
+To be updated
