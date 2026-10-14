@@ -25,7 +25,10 @@ layout: default
     <section class="home-section" aria-labelledby="news-heading">
       <div class="section-heading">
         <h2 id="news-heading">News</h2>
-        <a href="{{ '/news/' | relative_url }}">All news <span aria-hidden="true">→</span></a>
+        {% assign news_limit = page.announcements.limit | default: 4 %}
+        {% if site.news.size > news_limit %}
+          <a href="{{ '/news/' | relative_url }}">All news <span aria-hidden="true">→</span></a>
+        {% endif %}
       </div>
       {% include news.liquid limit=true %}
     </section>

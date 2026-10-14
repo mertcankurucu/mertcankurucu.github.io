@@ -7,4 +7,4 @@ inline: true
 related_posts: false
 ---
 
-Our paper "When fractional calculus meets robust learning: Adaptive robust loss functions" has been published in _Knowledge-Based Systems_.
+Our paper "When fractional calculus meets robust learning: Adaptive robust loss functions" was published in _Knowledge-Based Systems_.
