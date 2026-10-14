@@ -18,7 +18,7 @@ ninja.data = [{
           },
         },{id: "nav-teaching",
           title: "Teaching",
-          description: "Teaching support and project co-supervision at Istanbul Technical University.",
+          description: "",
           section: "Navigation",
           handler: () => {
             window.location.href = "/teaching/";
@@ -30,17 +30,14 @@ ninja.data = [{
           handler: () => {
             window.location.href = "/cv/";
           },
-        },{id: "news-our-paper-when-fractional-calculus-meets-robust-learning-adaptive-robust-loss-functions-has-been-published-in-knowledge-based-systems",
-          title: 'Our paper “When fractional calculus meets robust learning: Adaptive robust loss functions” has...',
-          description: "",
-          section: "News",},{id: "news-joined-kth-royal-institute-of-technology-as-a-visiting-postdoctoral-researcher-in-the-robotics-perception-and-learning-rpl-division-working-with-dr-hossein-azizpour",
-          title: 'Joined KTH Royal Institute of Technology as a Visiting Postdoctoral Researcher in the...',
+        },{id: "news-our-paper-when-fractional-calculus-meets-robust-learning-adaptive-robust-loss-functions-was-published-in-knowledge-based-systems",
+          title: 'Our paper “When fractional calculus meets robust learning: Adaptive robust loss functions” was...',
           description: "",
           section: "News",},{id: "news-completed-my-ph-d-in-control-and-automation-engineering-at-istanbul-technical-university",
           title: 'Completed my Ph.D. in Control and Automation Engineering at Istanbul Technical University.',
           description: "",
-          section: "News",},{id: "news-neurips-2026-our-paper-robust-flow-matching-under-target-corruption-and-label-noise-has-been-accepted",
-          title: 'NeurIPS 2026: Our paper Robust Flow Matching under Target Corruption and Label Noise...',
+          section: "News",},{id: "news-our-paper-robust-flow-matching-under-target-corruption-and-label-noise-was-accepted-to-neurips-2026",
+          title: 'Our paper Robust Flow Matching under Target Corruption and Label Noise was accepted...',
           description: "",
           section: "News",},{
         id: 'social-email',
