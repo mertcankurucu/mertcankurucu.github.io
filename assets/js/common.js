@@ -1,4 +1,11 @@
 $(document).ready(function () {
+  // Escape closes the compact navigation and returns focus to its control.
+  $("#navbarNav").on("keydown", function (event) {
+    if (event.key === "Escape" && $(this).hasClass("show")) {
+      $(this).collapse("hide");
+      document.querySelector(".navbar-toggler").focus();
+    }
+  });
   // add toggle functionality to abstract, award and bibtex buttons
   $("a.abstract").click(function () {
     $(this).parent().parent().find(".abstract.hidden").toggleClass("open");
