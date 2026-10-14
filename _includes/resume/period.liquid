@@ -1,0 +1,10 @@
+{% if include.entry.period %}
+  {{ include.entry.period }}
+{% elsif include.entry.startDate %}
+  {{ include.entry.startDate | slice: 0, 4 -}}
+  {%- if include.entry.endDate %}–{{ include.entry.endDate | slice: 0, 4 }}{% else %}–present{% endif %}
+{% elsif include.entry.date %}
+  {{ include.entry.date | slice: 0, 4 }}
+{% elsif include.entry.current %}
+  Current
+{% endif %}

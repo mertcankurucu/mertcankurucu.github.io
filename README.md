@@ -1,5 +1,15 @@
 # al-folio
 
+## Maintaining this academic site
+
+- Add and correct citations in `_bibliography/papers.bib`; keep existing citation keys stable. Use verified public URLs only. BibTeX disclosures omit al-folio presentation fields automatically.
+- Set homepage order and one-sentence contributions in `_data/featured_publications.yml`. Each `key` must match the bibliography; the file does not duplicate citations.
+- To add an approved figure, put it in `assets/img/publication_preview/` and add `image` (repository-relative path), `alt`, `width`, and `height` to its featured-paper entry. Missing files or incomplete image metadata render as text-only rows. Figures are contained, never cropped.
+- Add announcements as individual Markdown files in `_news/`, with a descriptive `title`, `layout: page`, `academic: true`, and `inline: true`. Use a real `date`, a `year` when only that is known, or `undated: true` when unknown. An undated `highlight: true` goes first; known events follow by year, with year-only entries after dated entries within that year. Home shows at most four items; `/news/` shows the archive.
+- Update the single web CV source, `assets/json/resume.json`. Dates may be year-only; an undated current role uses `current: true`. Teaching content is in `_pages/teaching.md`. Link to `/cv/` until a current CV PDF is available.
+- Shared editorial styles live in `_sass/_custom.scss`. Keep the private redesign brief, screenshots, and review notes outside the source checkout. This README and the theme documentation are excluded from the generated website in `_config.yml`.
+- Validate with `JEKYLL_ENV=production bundle exec jekyll build` in the supported Ruby/Docker environment described in `INSTALL.md`. Run the existing Prettier check on changed files, then inspect the rendered pages at desktop and phone widths in both themes before publishing.
+
 <div align="center">
 
 [![Preview](readme_preview/al-folio-preview.png)](https://alshedivat.github.io/al-folio/)

@@ -1,0 +1,9 @@
+# Order is intentional. Citations and resource URLs live only in papers.bib.
+- key: kurucu2026robustflow
+  summary: Robust flow matching for generative learning with corrupted targets and noisy labels.
+- key: kurucu2025fractional
+  summary: Adaptive robust loss functions that adjust robustness during learning.
+- key: kurucu2025classification
+  summary: An adaptive robust loss for classification with noisy labels, with robustness adjusted during training.
+- key: kurucu2026intelligent
+  summary: Deep reinforcement learning for semi-active friction-damper control in seismically excited buildings.

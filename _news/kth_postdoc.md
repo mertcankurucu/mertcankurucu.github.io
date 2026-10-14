@@ -1,6 +1,8 @@
 ---
-layout: post
-date: 2025-02-01 09:00:00+0100
+layout: page
+title: Visiting Postdoctoral Researcher at KTH
+academic: true
+undated: true
 inline: true
 related_posts: false
 ---

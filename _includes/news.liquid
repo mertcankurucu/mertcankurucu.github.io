@@ -1,34 +1,47 @@
-<div class="news">
-  {% if site.news != blank %}
-    {% assign news_size = site.news | size %}
-    <div
-      class="table-responsive"
-      {% if include.limit and page.announcements.scrollable and news_size > 3 %}
-        style="max-height: 60vw"
+{% assign highlights = site.news | where: 'highlight', true | sort: 'title' %}
+{% assign known_news = site.news | where_exp: 'item', 'item.undated != true' | where_exp: 'item', 'item.highlight != true' %}
+{% assign dated_news = known_news | where_exp: 'item', 'item.year == nil' | sort: 'date' | reverse %}
+{% assign yearly_news = known_news | where_exp: 'item', 'item.year != nil' | sort: 'title' %}
+{% capture news_years %}{% for item in known_news %}{% if item.year %}{{ item.year }}{% else %}{{ item.date | date: '%Y' }}{% endif %},{% endfor %}{% endcapture %}
+{% assign news_years = news_years | split: ',' | uniq | sort | reverse %}
+{% assign news_items = highlights %}
+{% for year in news_years %}
+  {% for item in dated_news %}
+    {% assign item_year = item.date | date: '%Y' %}
+    {% if item_year == year %}{% assign news_items = news_items | push: item %}{% endif %}
+  {% endfor %}
+  {% for item in yearly_news %}
+    {% assign item_year = item.year | append: '' %}
+    {% if item_year == year %}{% assign news_items = news_items | push: item %}{% endif %}
+  {% endfor %}
+{% endfor %}
+{% assign undated_news = site.news | where: 'undated', true | where_exp: 'item', 'item.highlight != true' | sort: 'title' %}
+{% assign news_items = news_items | concat: undated_news %}
+{% assign news_limit = news_items.size %}
+{% if include.limit %}{% assign news_limit = page.announcements.limit | default: 4 %}{% endif %}
+<ul class="news-list">
+  {% for item in news_items limit: news_limit %}
+    <li
+      {% if item.undated %}
+        class="news-undated"
       {% endif %}
     >
-      <table class="table table-sm table-borderless">
-        {% assign news = site.news | reverse %}
-        {% if include.limit and page.announcements.limit %}
-          {% assign news_limit = page.announcements.limit %}
+      {% unless item.undated %}
+        {% if item.year %}
+          <time datetime="{{ item.year }}">{{ item.year }}</time>
+        {% elsif item.date_precision == 'year' %}
+          <time datetime="{{ item.date | date: '%Y' }}">{{ item.date | date: '%Y' }}</time>
         {% else %}
-          {% assign news_limit = news_size %}
+          <time datetime="{{ item.date | date: '%Y-%m-%d' }}">{{ item.date | date: '%b %d, %Y' }}</time>
         {% endif %}
-        {% for item in news limit: news_limit %}
-          <tr>
-            <th scope="row" style="width: 20%">{{ item.date | date: '%b %d, %Y' }}</th>
-            <td>
-              {% if item.inline %}
-                {{ item.content | remove: '<p>' | remove: '</p>' | emojify }}
-              {% else %}
-                <a class="news-title" href="{{ item.url | relative_url }}">{{ item.title }}</a>
-              {% endif %}
-            </td>
-          </tr>
-        {% endfor %}
-      </table>
-    </div>
-  {% else %}
-    <p>No news so far...</p>
-  {% endif %}
-</div>
+      {% endunless %}
+      <div>
+        {% if item.inline -%}
+          {{- item.content -}}
+        {%- else -%}
+          <a href="{{ item.url | relative_url }}">{{ item.title }}</a>
+        {%- endif %}
+      </div>
+    </li>
+  {% endfor %}
+</ul>
