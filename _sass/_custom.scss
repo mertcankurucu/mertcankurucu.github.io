@@ -152,62 +152,96 @@ input:focus-visible {
   article > ul li {
     margin-bottom: 8px;
   }
-  .intro-grid {
+  .home-layout {
     display: grid;
-    grid-template-columns: minmax(0, 1fr) 230px;
-    grid-template-areas: "heading portrait" "prose portrait";
-    column-gap: 36px;
+    grid-template-columns: 240px minmax(0, 1fr);
+    gap: 40px;
     align-items: start;
   }
-  .intro-heading {
-    grid-area: heading;
+  .profile-panel {
+    --global-text-color: #f5f8fc;
+    --global-text-color-light: #ccd8e6;
+    --global-theme-color: #c4dcff;
+    --global-hover-color: #fff;
+    padding: 28px 24px 24px;
+    border: 1px solid #344c65;
+    border-radius: 8px;
+    background: #203449;
+    color: var(--global-text-color);
+    h1 {
+      font-size: 29px;
+      line-height: 1.2;
+      letter-spacing: -0.5px;
+      margin: 22px 0 14px;
+    }
   }
   .intro-role {
     color: var(--global-text-color-light);
-    font-size: 16px;
-    line-height: 1.5;
-    margin-bottom: 12px;
+    font-size: 15px;
+    line-height: 1.6;
+    margin-bottom: 0;
   }
   .contact-links {
     display: flex;
     flex-wrap: wrap;
-    gap: 4px 18px;
+    gap: 4px 14px;
     list-style: none;
-    padding: 0;
-    margin: 0 0 22px;
-    font-size: 16px;
+    padding: 16px 0 0;
+    margin: 20px 0 0;
+    border-top: 1px solid #52677d;
+    font-size: 15px;
     li {
       margin: 0;
     }
     a {
       display: inline-block;
       padding-block: 3px;
+      text-decoration: underline;
+      text-decoration-color: #718ba8;
+      &:hover {
+        text-decoration-color: currentColor;
+      }
     }
     .secondary-link {
       color: var(--global-text-color-light);
     }
   }
   .intro-portrait {
-    grid-area: portrait;
+    width: 160px;
     figure {
       margin: 0;
     }
     img {
       width: 100%;
       height: auto;
-      border-radius: 5px;
+      aspect-ratio: 1;
+      object-fit: cover;
+      object-position: 50% 42%;
+      border: 3px solid #8da4ba;
+      border-radius: 50%;
       display: block;
     }
   }
+  .home-content,
   .intro-prose {
-    grid-area: prose;
     min-width: 0;
+  }
+  .intro-prose h2 {
+    margin: 0 0 20px;
   }
   .intro-prose p:last-child {
     margin-bottom: 0;
   }
   .home-section {
-    margin-top: 38px;
+    margin-top: 32px;
+    padding-top: 28px;
+    border-top: 1px solid var(--global-divider-color);
+  }
+  .home-contact p {
+    margin-bottom: 0;
+    a {
+      text-decoration: underline;
+    }
   }
   .section-heading {
     display: flex;
@@ -453,6 +487,42 @@ input:focus-visible {
     }
   }
 }
+@media (min-width: 992px) and (min-height: 700px) {
+  .academic-site .profile-panel {
+    position: sticky;
+    top: 90px;
+  }
+}
+@media (max-width: 991px) {
+  .academic-site {
+    .home-layout {
+      grid-template-columns: minmax(0, 1fr);
+      gap: 32px;
+    }
+    .profile-panel {
+      display: grid;
+      grid-template-columns: minmax(0, 1fr) 160px;
+      grid-template-areas: "heading portrait" "role portrait" "links portrait";
+      column-gap: 28px;
+      h1 {
+        margin-top: 0;
+        font-size: 32px;
+      }
+    }
+    .intro-heading {
+      grid-area: heading;
+    }
+    .intro-role {
+      grid-area: role;
+    }
+    .intro-portrait {
+      grid-area: portrait;
+    }
+    .contact-links {
+      grid-area: links;
+    }
+  }
+}
 @media (max-width: 767px) {
   #navbar {
     .site-nav-inner {
@@ -486,10 +556,6 @@ input:focus-visible {
       margin-top: 30px;
       padding-inline: 20px;
     }
-    .intro-grid {
-      grid-template-columns: minmax(0, 1fr) 190px;
-      gap: 24px;
-    }
     .publications .publication-with-figure {
       grid-template-columns: 160px minmax(0, 1fr);
       gap: 20px;
@@ -505,23 +571,28 @@ input:focus-visible {
     h2 {
       font-size: 23px;
     }
-    .intro-grid {
-      grid-template-columns: minmax(0, 1fr);
-      grid-template-areas: "heading" "portrait" "prose";
-      gap: 22px;
+    .profile-panel {
+      grid-template-columns: minmax(0, 1fr) 88px;
+      grid-template-areas: "heading portrait" "role role" "links links";
+      column-gap: 16px;
+      padding: 22px 20px 20px;
+      h1 {
+        font-size: 28px;
+        margin-bottom: 12px;
+      }
     }
     .intro-portrait {
-      width: 144px;
+      width: 88px;
+    }
+    .intro-role {
+      margin-top: 14px;
     }
     .contact-links {
-      margin-bottom: 0;
-      gap: 4px 16px;
+      margin-top: 18px;
+      gap: 4px 14px;
     }
     .section-heading {
       align-items: start;
-    }
-    .home-section {
-      margin-top: 36px;
     }
     .news-list li {
       grid-template-columns: minmax(0, 1fr);
