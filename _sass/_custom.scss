@@ -179,6 +179,7 @@ input:focus-visible {
     background-color: var(--profile-bg-color);
     background-image: var(--profile-gradient);
     color: var(--global-text-color);
+    text-align: center;
     h1 {
       font-size: 29px;
       line-height: 1.2;
@@ -190,11 +191,13 @@ input:focus-visible {
     color: var(--global-text-color-light);
     font-size: 15px;
     line-height: 1.6;
-    margin-bottom: 0;
+    max-width: 34ch;
+    margin: 0 auto;
   }
   .contact-links {
     display: flex;
     flex-wrap: wrap;
+    justify-content: center;
     gap: 4px 14px;
     list-style: none;
     padding: 16px 0 0;
@@ -219,6 +222,7 @@ input:focus-visible {
   }
   .intro-portrait {
     width: 160px;
+    margin-inline: auto;
     figure {
       margin: 0;
     }
@@ -510,27 +514,8 @@ input:focus-visible {
       grid-template-columns: minmax(0, 1fr);
       gap: 32px;
     }
-    .profile-panel {
-      display: grid;
-      grid-template-columns: minmax(0, 1fr) 160px;
-      grid-template-areas: "heading portrait" "role portrait" "links portrait";
-      column-gap: 28px;
-      h1 {
-        margin-top: 0;
-        font-size: 32px;
-      }
-    }
-    .intro-heading {
-      grid-area: heading;
-    }
-    .intro-role {
-      grid-area: role;
-    }
-    .intro-portrait {
-      grid-area: portrait;
-    }
-    .contact-links {
-      grid-area: links;
+    .profile-panel h1 {
+      font-size: 32px;
     }
   }
 }
@@ -583,9 +568,6 @@ input:focus-visible {
       font-size: 23px;
     }
     .profile-panel {
-      grid-template-columns: minmax(0, 1fr) 88px;
-      grid-template-areas: "heading portrait" "role role" "links links";
-      column-gap: 16px;
       padding: 22px 20px 20px;
       h1 {
         font-size: 28px;
@@ -593,10 +575,7 @@ input:focus-visible {
       }
     }
     .intro-portrait {
-      width: 88px;
-    }
-    .intro-role {
-      margin-top: 14px;
+      width: 120px;
     }
     .contact-links {
       margin-top: 18px;
