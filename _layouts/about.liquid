@@ -7,7 +7,7 @@ layout: default
       {% if page.profile.image %}
         <div class="intro-portrait">
           {% assign portrait = page.profile.image | prepend: 'assets/img/' %}
-          {% include figure.liquid path=portrait loading="eager" width=page.profile.width height=page.profile.height sizes="(max-width: 640px) 88px, 160px" alt="Mert Can Kurucu" %}
+          {% include figure.liquid path=portrait loading="eager" width=page.profile.width height=page.profile.height sizes="(max-width: 640px) 120px, 160px" alt="Mert Can Kurucu" %}
         </div>
       {% endif %}
       <header class="intro-heading">
