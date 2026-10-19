@@ -1,12 +1,17 @@
 // Editorial academic pages. Keep Bootstrap containers on unrelated routes intact.
 :root {
-  --global-bg-color: #fff;
-  --global-text-color: #20252b;
-  --global-text-color-light: #586270;
-  --global-theme-color: #175cd3;
-  --global-hover-color: #124aa9;
-  --global-divider-color: #e4e7ec;
-  --global-card-bg-color: #fff;
+  --global-bg-color: #fdfdfe;
+  --global-text-color: #394150;
+  --global-text-color-light: #626b7a;
+  --global-theme-color: #4c63ad;
+  --global-hover-color: #364b8c;
+  --global-divider-color: #e5e8ee;
+  --global-card-bg-color: #fdfdfe;
+  --profile-bg-color: #4b6183;
+  --profile-gradient: linear-gradient(155deg, #536f9b 0%, #43526a 100%);
+  --profile-border-color: #74869e;
+  --profile-secondary-color: #edf3ff;
+  --profile-link-color: #f1f5ff;
 }
 html[data-theme="dark"] {
   --global-bg-color: #171a20;
@@ -16,6 +21,11 @@ html[data-theme="dark"] {
   --global-hover-color: #b4cfff;
   --global-divider-color: #343c49;
   --global-card-bg-color: #171a20;
+  --profile-bg-color: #2b3b4f;
+  --profile-gradient: linear-gradient(155deg, #304257 0%, #263446 100%);
+  --profile-border-color: #45556b;
+  --profile-secondary-color: #ccd8e6;
+  --profile-link-color: #c4dcff;
 }
 body {
   font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
@@ -152,62 +162,97 @@ input:focus-visible {
   article > ul li {
     margin-bottom: 8px;
   }
-  .intro-grid {
+  .home-layout {
     display: grid;
-    grid-template-columns: minmax(0, 1fr) 230px;
-    grid-template-areas: "heading portrait" "prose portrait";
-    column-gap: 36px;
+    grid-template-columns: 240px minmax(0, 1fr);
+    gap: 40px;
     align-items: start;
   }
-  .intro-heading {
-    grid-area: heading;
+  .profile-panel {
+    --global-text-color: #f5f8fc;
+    --global-text-color-light: var(--profile-secondary-color);
+    --global-theme-color: var(--profile-link-color);
+    --global-hover-color: #fff;
+    padding: 28px 24px 24px;
+    border: 1px solid var(--profile-border-color);
+    border-radius: 8px;
+    background-color: var(--profile-bg-color);
+    background-image: var(--profile-gradient);
+    color: var(--global-text-color);
+    h1 {
+      font-size: 29px;
+      line-height: 1.2;
+      letter-spacing: -0.5px;
+      margin: 22px 0 14px;
+    }
   }
   .intro-role {
     color: var(--global-text-color-light);
-    font-size: 16px;
-    line-height: 1.5;
-    margin-bottom: 12px;
+    font-size: 15px;
+    line-height: 1.6;
+    margin-bottom: 0;
   }
   .contact-links {
     display: flex;
     flex-wrap: wrap;
-    gap: 4px 18px;
+    gap: 4px 14px;
     list-style: none;
-    padding: 0;
-    margin: 0 0 22px;
-    font-size: 16px;
+    padding: 16px 0 0;
+    margin: 20px 0 0;
+    border-top: 1px solid rgba(226, 235, 248, 0.25);
+    font-size: 15px;
     li {
       margin: 0;
     }
     a {
       display: inline-block;
       padding-block: 3px;
+      text-decoration: underline;
+      text-decoration-color: rgba(226, 235, 248, 0.55);
+      &:hover {
+        text-decoration-color: currentColor;
+      }
     }
     .secondary-link {
       color: var(--global-text-color-light);
     }
   }
   .intro-portrait {
-    grid-area: portrait;
+    width: 160px;
     figure {
       margin: 0;
     }
     img {
       width: 100%;
       height: auto;
-      border-radius: 5px;
+      aspect-ratio: 1;
+      object-fit: cover;
+      object-position: 50% 42%;
+      border: 3px solid rgba(226, 235, 248, 0.65);
+      border-radius: 50%;
       display: block;
     }
   }
+  .home-content,
   .intro-prose {
-    grid-area: prose;
     min-width: 0;
+  }
+  .intro-prose h2 {
+    margin: 0 0 20px;
   }
   .intro-prose p:last-child {
     margin-bottom: 0;
   }
   .home-section {
-    margin-top: 38px;
+    margin-top: 32px;
+    padding-top: 28px;
+    border-top: 1px solid var(--global-divider-color);
+  }
+  .home-contact p {
+    margin-bottom: 0;
+    a {
+      text-decoration: underline;
+    }
   }
   .section-heading {
     display: flex;
@@ -453,6 +498,42 @@ input:focus-visible {
     }
   }
 }
+@media (min-width: 992px) and (min-height: 700px) {
+  .academic-site .profile-panel {
+    position: sticky;
+    top: 90px;
+  }
+}
+@media (max-width: 991px) {
+  .academic-site {
+    .home-layout {
+      grid-template-columns: minmax(0, 1fr);
+      gap: 32px;
+    }
+    .profile-panel {
+      display: grid;
+      grid-template-columns: minmax(0, 1fr) 160px;
+      grid-template-areas: "heading portrait" "role portrait" "links portrait";
+      column-gap: 28px;
+      h1 {
+        margin-top: 0;
+        font-size: 32px;
+      }
+    }
+    .intro-heading {
+      grid-area: heading;
+    }
+    .intro-role {
+      grid-area: role;
+    }
+    .intro-portrait {
+      grid-area: portrait;
+    }
+    .contact-links {
+      grid-area: links;
+    }
+  }
+}
 @media (max-width: 767px) {
   #navbar {
     .site-nav-inner {
@@ -486,10 +567,6 @@ input:focus-visible {
       margin-top: 30px;
       padding-inline: 20px;
     }
-    .intro-grid {
-      grid-template-columns: minmax(0, 1fr) 190px;
-      gap: 24px;
-    }
     .publications .publication-with-figure {
       grid-template-columns: 160px minmax(0, 1fr);
       gap: 20px;
@@ -505,23 +582,28 @@ input:focus-visible {
     h2 {
       font-size: 23px;
     }
-    .intro-grid {
-      grid-template-columns: minmax(0, 1fr);
-      grid-template-areas: "heading" "portrait" "prose";
-      gap: 22px;
+    .profile-panel {
+      grid-template-columns: minmax(0, 1fr) 88px;
+      grid-template-areas: "heading portrait" "role role" "links links";
+      column-gap: 16px;
+      padding: 22px 20px 20px;
+      h1 {
+        font-size: 28px;
+        margin-bottom: 12px;
+      }
     }
     .intro-portrait {
-      width: 144px;
+      width: 88px;
+    }
+    .intro-role {
+      margin-top: 14px;
     }
     .contact-links {
-      margin-bottom: 0;
-      gap: 4px 16px;
+      margin-top: 18px;
+      gap: 4px 14px;
     }
     .section-heading {
       align-items: start;
-    }
-    .home-section {
-      margin-top: 36px;
     }
     .news-list li {
       grid-template-columns: minmax(0, 1fr);

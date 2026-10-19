@@ -2,45 +2,61 @@
 layout: default
 ---
 <article class="academic-home">
-  <div class="intro-grid">
-    <header class="intro-heading">
-      <h1>
-        {{ site.first_name }}
-        {{ site.middle_name }}
-        {{ site.last_name }}
-      </h1>
+  <div class="home-layout">
+    <div class="profile-panel">
+      {% if page.profile.image %}
+        <div class="intro-portrait">
+          {% assign portrait = page.profile.image | prepend: 'assets/img/' %}
+          {% include figure.liquid path=portrait loading="eager" width=page.profile.width height=page.profile.height sizes="(max-width: 640px) 88px, 160px" alt="Mert Can Kurucu" %}
+        </div>
+      {% endif %}
+      <header class="intro-heading">
+        <h1>
+          {{ site.first_name }}
+          {{ site.middle_name }}
+          {{ site.last_name }}
+        </h1>
+      </header>
       <p class="intro-role">{{ page.subtitle }}</p>
       {% include contact_links.liquid %}
-    </header>
-    {% if page.profile.image %}
-      <div class="intro-portrait">
-        {% assign portrait = page.profile.image | prepend: 'assets/img/' %}
-        {% include figure.liquid path=portrait loading="eager" width=page.profile.width height=page.profile.height sizes="(max-width: 640px) 144px, 230px" alt="Mert Can Kurucu" %}
-      </div>
-    {% endif %}
-    <div class="intro-prose">{{ content }}</div>
+    </div>
+    <div class="home-content">
+      <section class="intro-prose" aria-labelledby="about-heading">
+        <h2 id="about-heading">About</h2>
+        {{ content }}
+      </section>
+
+      {% if page.announcements.enabled %}
+        <section class="home-section" aria-labelledby="news-heading">
+          <div class="section-heading">
+            <h2 id="news-heading">News</h2>
+            {% assign news_limit = page.announcements.limit | default: 4 %}
+            {% if site.news.size > news_limit %}
+              <a href="{{ '/news/' | relative_url }}">All news <span aria-hidden="true">→</span></a>
+            {% endif %}
+          </div>
+          {% include news.liquid limit=true %}
+        </section>
+      {% endif %}
+
+      {% if page.selected_papers %}
+        <section class="home-section" aria-labelledby="publications-heading">
+          <div class="section-heading">
+            <h2 id="publications-heading">Selected publications</h2>
+            <a href="{{ '/publications/' | relative_url }}">All publications <span aria-hidden="true">→</span></a>
+          </div>
+          {% include selected_papers.liquid %}
+        </section>
+      {% endif %}
+
+      <section class="home-section home-contact" aria-labelledby="contact-heading">
+        <div class="section-heading">
+          <h2 id="contact-heading">Contact</h2>
+        </div>
+        <p>
+          <a href="mailto:{{ site.data.socials.email }}">{{ site.data.socials.email }}</a>
+        </p>
+      </section>
+    </div>
   </div>
-
-  {% if page.announcements.enabled %}
-    <section class="home-section" aria-labelledby="news-heading">
-      <div class="section-heading">
-        <h2 id="news-heading">News</h2>
-        {% assign news_limit = page.announcements.limit | default: 4 %}
-        {% if site.news.size > news_limit %}
-          <a href="{{ '/news/' | relative_url }}">All news <span aria-hidden="true">→</span></a>
-        {% endif %}
-      </div>
-      {% include news.liquid limit=true %}
-    </section>
-  {% endif %}
-
-  {% if page.selected_papers %}
-    <section class="home-section" aria-labelledby="publications-heading">
-      <div class="section-heading">
-        <h2 id="publications-heading">Selected publications</h2>
-        <a href="{{ '/publications/' | relative_url }}">All publications <span aria-hidden="true">→</span></a>
-      </div>
-      {% include selected_papers.liquid %}
-    </section>
-  {% endif %}
 </article>
